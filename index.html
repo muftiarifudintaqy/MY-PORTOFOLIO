@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta name="description" content="Mufti Arifudin Taqy — Software Developer. Flutter, Laravel, React specialist."/>
+  <title>Mufti Arifudin Taqy | Software Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="icon" href="assets/images/logo.png" type="image/png"/>
+</head>
+<body>
+
+<!-- PARTICLE CANVAS — always behind everything -->
+<canvas id="particleCanvas"></canvas>
+
+<!-- Custom Cursor -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- HEADER -->
+<header class="header" id="header">
+  <div class="container">
+    <nav class="navbar">
+      <a href="#home" class="logo">
+        <span class="logo-mufti">Mufti</span><span class="logo-port">Portfolio</span>
+      </a>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#experience" class="nav-link">Experience</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">
+          <i class="fas fa-sun sun-icon"></i>
+          <i class="fas fa-moon moon-icon"></i>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="home" class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-greeting">
+          <span class="greeting-dash"></span>
+          <span class="greeting-word" id="greetingWord">Hello</span>
+          <span class="greeting-im">, I'm</span>
+        </div>
+        <h1 class="hero-name">
+          <span class="name-first">Mufti</span>
+          <span class="name-last">Arifudin Taqy</span>
+        </h1>
+        <div class="hero-role-pill">
+          <span class="role-dot"></span>
+          <span>Software Developer</span>
+          <span class="role-slash">/</span>
+          <span>Global Explorer</span>
+        </div>
+        <p class="hero-desc">Crafting high-performance, pixel-perfect digital products — from mobile apps to full-stack web platforms. Turning complex problems into elegant, scalable solutions.</p>
+        <div class="hero-stats">
+          <div class="stat-item"><span class="stat-n">3+</span><span class="stat-l">Projects Shipped</span></div>
+          <div class="stat-sep"></div>
+          <div class="stat-item"><span class="stat-n">20+</span><span class="stat-l">Countries</span></div>
+          <div class="stat-sep"></div>
+          <div class="stat-item"><span class="stat-n">163+</span><span class="stat-l">Students Trained</span></div>
+        </div>
+        <div class="hero-cta">
+          <a href="#projects" class="btn-primary"><span>View My Work</span><i class="fas fa-arrow-right"></i></a>
+          <a href="#contact" class="btn-outline"><span>Let's Talk</span></a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="avatar-wrapper">
+          <div class="avatar-glow"></div>
+          <div class="avatar-orbit orbit-1"></div>
+          <div class="avatar-orbit orbit-2"></div>
+          <img src="assets/images/mufti.png" alt="Mufti Arifudin Taqy" class="avatar-img"/>
+          <div class="avatar-badge">
+            <span class="badge-dot"></span>
+            <i class="fas fa-code"></i>
+            <span>Available for hire</span>
+          </div>
+          <!-- Floating tech icons -->
+          <div class="float-icon fi-1"><i class="devicon-flutter-plain"></i></div>
+          <div class="float-icon fi-2"><i class="devicon-laravel-plain"></i></div>
+          <div class="float-icon fi-3"><i class="devicon-react-original"></i></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint"><a href="#about"><span>Scroll Down</span><i class="fas fa-chevron-down"></i></a></div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="about section">
+  <div class="container">
+    <div class="sec-head center">
+      <span class="sec-tag">Who I Am</span>
+      <h2 class="sec-title">About Me</h2>
+      <p class="sec-sub">Passionate developer, global traveler, lifelong learner.</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-img-col">
+        <div class="about-img-wrap">
+          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=700&q=80&fit=crop" alt="Team collaboration and coding" class="about-img"/>
+          <div class="about-img-badge"><i class="fas fa-earth-americas"></i><span>20+ Countries</span></div>
+        </div>
+      </div>
+      <div class="about-text-col">
+        <p class="about-lead">I'm a <strong>Software Developer</strong> who believes great code is built the same way great journeys are — through curiosity, iteration, and a relentless pursuit of quality.</p>
+        <p class="about-body">Currently honing my craft at <strong>IDN Backpacker School Sentul</strong>, where technology education meets a global mindset. My development philosophy blends clean architecture with real-world user needs.</p>
+        <p class="about-body">Beyond the screen, I'm a passionate backpacker and tech enthusiast who has explored countries across Southeast Asia from the modern — <strong>20+ countries</strong> — from Malaysia Kuala Lumpur to hidden cultural gems discovered throughout my travel journey. Every trip has strengthened my adaptability, communication, and understanding of diverse people and environments. These experiences shape how I build digital products: with creativity, problem-solving, and a user-focused mindset that connects technology with real human experiences.</p>
+        <div class="about-cards">
+          <div class="acard"><div class="acard-icon"><i class="fas fa-layer-group"></i></div><div><h4>Full-Stack Dev</h4><p>Web & Mobile</p></div></div>
+          <div class="acard"><div class="acard-icon"><i class="fas fa-graduation-cap"></i></div><div><h4>IDN Boarding School</h4><p>Sentul, Indonesia</p></div></div>
+          <div class="acard"><div class="acard-icon"><i class="fas fa-plane"></i></div><div><h4>20+ Countries</h4><p>Global Explorer</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="skills section alt-bg">
+  <div class="container">
+    <div class="sec-head center">
+      <span class="sec-tag">Tech Stack</span>
+      <h2 class="sec-title">Skills & Technologies</h2>
+      <p class="sec-sub">Tools I use to build exceptional digital products.</p>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card" data-delay="0"><div class="sk-icon"><i class="devicon-html5-plain"></i></div><span class="sk-name">HTML5</span><div class="sk-bar"><div class="sk-fill" data-w="95"></div></div></div>
+      <div class="skill-card" data-delay="1"><div class="sk-icon"><i class="devicon-css3-plain"></i></div><span class="sk-name">CSS3</span><div class="sk-bar"><div class="sk-fill" data-w="90"></div></div></div>
+      <div class="skill-card" data-delay="2"><div class="sk-icon"><i class="devicon-javascript-plain"></i></div><span class="sk-name">JavaScript</span><div class="sk-bar"><div class="sk-fill" data-w="85"></div></div></div>
+      <div class="skill-card" data-delay="3"><div class="sk-icon"><i class="devicon-react-original"></i></div><span class="sk-name">React</span><div class="sk-bar"><div class="sk-fill" data-w="80"></div></div></div>
+      <div class="skill-card" data-delay="4"><div class="sk-icon"><i class="devicon-php-plain"></i></div><span class="sk-name">PHP</span><div class="sk-bar"><div class="sk-fill" data-w="78"></div></div></div>
+      <div class="skill-card" data-delay="5"><div class="sk-icon"><i class="devicon-laravel-plain"></i></div><span class="sk-name">Laravel</span><div class="sk-bar"><div class="sk-fill" data-w="82"></div></div></div>
+      <div class="skill-card" data-delay="6"><div class="sk-icon"><i class="devicon-dart-plain"></i></div><span class="sk-name">Dart</span><div class="sk-bar"><div class="sk-fill" data-w="88"></div></div></div>
+      <div class="skill-card" data-delay="7"><div class="sk-icon"><i class="devicon-flutter-plain"></i></div><span class="sk-name">Flutter</span><div class="sk-bar"><div class="sk-fill" data-w="90"></div></div></div>
+      <div class="skill-card" data-delay="8"><div class="sk-icon"><i class="devicon-nextjs-plain"></i></div><span class="sk-name">Next.js</span><div class="sk-bar"><div class="sk-fill" data-w="75"></div></div></div>
+      <div class="skill-card" data-delay="9"><div class="sk-icon"><i class="devicon-firebase-plain"></i></div><span class="sk-name">Firebase</span><div class="sk-bar"><div class="sk-fill" data-w="85"></div></div></div>
+      <div class="skill-card" data-delay="10"><div class="sk-icon"><i class="devicon-bootstrap-plain"></i></div><span class="sk-name">Bootstrap</span><div class="sk-bar"><div class="sk-fill" data-w="88"></div></div></div>
+      <div class="skill-card" data-delay="11"><div class="sk-icon"><i class="devicon-tailwindcss-plain"></i></div><span class="sk-name">Tailwind</span><div class="sk-bar"><div class="sk-fill" data-w="83"></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="projects section">
+  <div class="container">
+    <div class="sec-head center">
+      <span class="sec-tag">Portfolio</span>
+      <h2 class="sec-title">Featured Projects</h2>
+      <p class="sec-sub">A selection of work that showcases my technical range and design sensibility.</p>
+    </div>
+    <div class="proj-filter">
+      <button class="filter-btn active" data-filter="all">All Projects</button>
+      <button class="filter-btn" data-filter="flutter">Flutter</button>
+      <button class="filter-btn" data-filter="web">Web</button>
+    </div>
+    <div class="projects-grid">
+      <!-- E-commerce -->
+      <div class="proj-card" data-category="flutter">
+        <div class="proj-img-wrap">
+          <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=700&q=80&fit=crop" alt="E-Commerce Mobile App"/>
+          <div class="proj-overlay"><a href="https://github.com/muftiarifudintaqy/E-commerce_flutter.git" target="_blank" class="overlay-btn"><i class="fab fa-github"></i> View Code</a></div>
+          <div class="proj-badge flutter-badge"><i class="devicon-flutter-plain"></i> Flutter</div>
+        </div>
+        <div class="proj-body">
+          <h3 class="proj-title">E-Commerce Mobile App</h3>
+          <p class="proj-desc">A feature-rich cross-platform e-commerce app delivering seamless shopping UX. Real-time product catalog, cart management, secure multi-method payment processing, and user authentication — powered by Firebase and Flutter.</p>
+          <div class="proj-tech"><span>Flutter</span><span>Dart</span><span>Firebase</span><span>Node.js</span></div>
+          <a href="https://github.com/muftiarifudintaqy/E-commerce_flutter.git" class="proj-cta" target="_blank"><i class="fab fa-github"></i> Source Code</a>
+        </div>
+      </div>
+      <!-- News App -->
+      <div class="proj-card" data-category="flutter">
+        <div class="proj-img-wrap">
+          <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=700&q=80&fit=crop" alt="News Aggregator App"/>
+          <div class="proj-overlay"><a href="https://github.com/muftiarifudintaqy/news_app.git" target="_blank" class="overlay-btn"><i class="fab fa-github"></i> View Code</a></div>
+          <div class="proj-badge flutter-badge"><i class="devicon-flutter-plain"></i> Flutter</div>
+        </div>
+        <div class="proj-body">
+          <h3 class="proj-title">News Aggregator App</h3>
+          <p class="proj-desc">A modern, content-first news application aggregating real-time headlines across curated categories. Bookmarking with local SQLite persistence, Firebase user preferences sync, and a minimalist reading UI designed for daily engagement.</p>
+          <div class="proj-tech"><span>Flutter</span><span>Dart</span><span>Firebase</span><span>SQLite</span></div>
+          <a href="https://github.com/muftiarifudintaqy/news_app.git" class="proj-cta" target="_blank"><i class="fab fa-github"></i> Source Code</a>
+        </div>
+      </div>
+      <!-- Payroll -->
+      <div class="proj-card" data-category="web">
+        <div class="proj-img-wrap">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=700&q=80&fit=crop" alt="Payroll Management System"/>
+          <div class="proj-overlay"><a href="https://github.com/muftiarifudintaqy/payrollrawr.git" target="_blank" class="overlay-btn"><i class="fab fa-github"></i> View Code</a></div>
+          <div class="proj-badge web-badge"><i class="fas fa-globe"></i> Web App</div>
+        </div>
+        <div class="proj-body">
+          <h3 class="proj-title">Payroll Management System</h3>
+          <p class="proj-desc">A comprehensive web-based payroll and financial system built for academic institutions. Automates salary computation, expense tracking, budget planning — with payment reminder notifications, analytics dashboards, and RESTful API integration.</p>
+          <div class="proj-tech"><span>Laravel</span><span>Blade</span><span>PHPMyAdmin</span><span>REST API</span></div>
+          <a href="https://github.com/muftiarifudintaqy/payrollrawr.git" class="proj-cta" target="_blank"><i class="fab fa-github"></i> Source Code</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="experience section alt-bg">
+  <div class="container">
+    <div class="sec-head center">
+      <span class="sec-tag">Journey</span>
+      <h2 class="sec-title">Work Experience</h2>
+      <p class="sec-sub">Empowering the next generation of developers through hands-on training and real-world project mentorship.</p>
+    </div>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-main">
+            <div class="tl-hdr"><div class="tl-icon"><i class="fas fa-chalkboard-teacher"></i></div><div><h3 class="tl-title">IT Trainer</h3><div class="tl-company"><i class="fas fa-building"></i>EL-Rasyad Jakarta</div></div></div>
+            <p class="tl-desc">Designed and delivered an intensive web development curriculum focused on responsive, modern portfolio websites. Guided 50+ students through the complete lifecycle — from semantic HTML and CSS layouts to interactive JavaScript — equipping each with a deployable personal portfolio by program end.</p>
+            <div class="tl-tags"><span>Responsive Design</span><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Portfolio Dev</span></div>
+          </div>
+          <div class="tl-side">
+            <div class="tl-badge-vol"><span class="vol-lbl">VOLUNTEER</span><span class="vol-date">January 2025</span></div>
+            <div class="tl-stats"><div class="ts"><span class="ts-n">50+</span><span class="ts-l">Students</span></div><div class="ts"><span class="ts-n">3</span><span class="ts-l">Days</span></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-main">
+            <div class="tl-hdr"><div class="tl-icon"><i class="fas fa-chalkboard-teacher"></i></div><div><h3 class="tl-title">IT Trainer</h3><div class="tl-company"><i class="fas fa-building"></i>Qurrota A'yun Jakarta Timur</div></div></div>
+            <p class="tl-desc">Facilitated structured web development workshops introducing students to modern UI component architecture. Taught card-based layout design covering responsive grid systems, typography hierarchy, and interactive state management to deliver polished, production-ready components.</p>
+            <div class="tl-tags"><span>Card UI</span><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Responsive Design</span></div>
+          </div>
+          <div class="tl-side">
+            <div class="tl-badge-vol"><span class="vol-lbl">VOLUNTEER</span><span class="vol-date">January 2025</span></div>
+            <div class="tl-stats"><div class="ts"><span class="ts-n">30+</span><span class="ts-l">Students</span></div><div class="ts"><span class="ts-n">3</span><span class="ts-l">Days</span></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-main">
+            <div class="tl-hdr"><div class="tl-icon"><i class="fas fa-chalkboard-teacher"></i></div><div><h3 class="tl-title">IT Trainer</h3><div class="tl-company"><i class="fas fa-building"></i>SMK Islam Insan Mulia</div></div></div>
+            <p class="tl-desc">Delivered a tailored vocational web development program aligned with industry standards. Curriculum emphasized practical HTML, CSS, and JavaScript proficiencies applicable to real-world development roles — empowering students with both conceptual understanding and hands-on implementation skills.</p>
+            <div class="tl-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Vocational Training</span><span>Technical Education</span></div>
+          </div>
+          <div class="tl-side">
+            <div class="tl-badge-vol"><span class="vol-lbl">VOLUNTEER</span><span class="vol-date">January 2025</span></div>
+            <div class="tl-stats"><div class="ts"><span class="ts-n">33+</span><span class="ts-l">Students</span></div><div class="ts"><span class="ts-n">3</span><span class="ts-l">Days</span></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-main">
+            <div class="tl-hdr"><div class="tl-icon"><i class="fas fa-chalkboard-teacher"></i></div><div><h3 class="tl-title">IT Trainer</h3><div class="tl-company"><i class="fas fa-building"></i>SMK Hiro</div></div></div>
+            <p class="tl-desc">Conducted an intensive full-cycle web development bootcamp, bridging the gap between academic theory and industry application. Developed project-based learning modules where students built functional web apps from scratch — reinforcing core HTML, CSS, and JavaScript competencies through real deployment workflows.</p>
+            <div class="tl-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Project-Based Learning</span><span>Web Development</span></div>
+          </div>
+          <div class="tl-side">
+            <div class="tl-badge-vol"><span class="vol-lbl">VOLUNTEER</span><span class="vol-date">April 2025</span></div>
+            <div class="tl-stats"><div class="ts"><span class="ts-n">50+</span><span class="ts-l">Students</span></div><div class="ts"><span class="ts-n">3</span><span class="ts-l">Days</span></div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact section">
+  <div class="container">
+    <div class="sec-head center">
+      <span class="sec-tag">Get In Touch</span>
+      <h2 class="sec-title">Contact Me</h2>
+      <p class="sec-sub">Open to new projects, collaborations, and conversations.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3 class="contact-hl">Let's Build Something <em>Remarkable</em> Together</h3>
+        <p class="contact-body">Whether you have a product idea, a technical challenge, or simply want to connect — I'd love to hear from you. I'm available for freelance work and full-time roles.</p>
+        <div class="contact-links">
+          <a href="mailto:muftiarifudintaqy0@gmail.com" class="clink">
+            <div class="cl-ico"><i class="fas fa-envelope"></i></div>
+            <div class="cl-txt"><span class="cl-lbl">Email</span><span class="cl-val">muftiarifudintaqy0@gmail.com</span></div>
+            <i class="fas fa-arrow-right cl-arr"></i>
+          </a>
+          <a href="https://github.com/muftiarifudintaqy" target="_blank" class="clink">
+            <div class="cl-ico"><i class="fab fa-github"></i></div>
+            <div class="cl-txt"><span class="cl-lbl">GitHub</span><span class="cl-val">github.com/muftiarifudintaqy</span></div>
+            <i class="fas fa-arrow-right cl-arr"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/muftiarifudintaqy-kechee-abiezzzz" target="_blank" class="clink">
+            <div class="cl-ico"><i class="fab fa-linkedin"></i></div>
+            <div class="cl-txt"><span class="cl-lbl">LinkedIn</span><span class="cl-val">linkedin.com/in/muftiarifudintaqy</span></div>
+            <i class="fas fa-arrow-right cl-arr"></i>
+          </a>
+          <a href="https://www.instagram.com/muft_zy/" target="_blank" class="clink">
+            <div class="cl-ico"><i class="fab fa-instagram"></i></div>
+            <div class="cl-txt"><span class="cl-lbl">Instagram</span><span class="cl-val">@muft_zy</span></div>
+            <i class="fas fa-arrow-right cl-arr"></i>
+          </a>
+        </div>
+      </div>
+      <div class="contact-form-wrap">
+        <!-- FORMSPREE: ganti /f/manrpwwd dengan form ID kamu -->
+        <form id="contactForm" class="contact-form">
+          <div class="form-row">
+            <div class="form-field"><label>Full Name</label><input type="text" name="name" required placeholder="Your full name"/></div>
+            <div class="form-field"><label>Email</label><input type="email" name="email" required placeholder="your@email.com"/></div>
+          </div>
+          <div class="form-field"><label>Subject</label><input type="text" name="subject" placeholder="Project inquiry, collaboration..."/></div>
+          <div class="form-field"><label>Message</label><textarea name="message" rows="5" required placeholder="Tell me about your project..."></textarea></div>
+          <button type="submit" class="form-submit" id="formSubmit">
+            <span class="st-txt"><i class="fas fa-paper-plane"></i> Send Message</span>
+            <span class="st-load" style="display:none"><i class="fas fa-spinner fa-spin"></i> Sending...</span>
+          </button>
+          <div id="formMsg" class="form-msg"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="#home" class="logo"><span class="logo-mufti">Mufti</span><span class="logo-port">Portfolio</span></a>
+        <p>Software Developer & Global Explorer</p>
+        <div class="footer-socials">
+          <a href="https://github.com/muftiarifudintaqy" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://www.instagram.com/muft_zy/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/in/muftiarifudintaqy-kechee-abiezzzz" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="mailto:muftiarifudintaqy0@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+      <div class="footer-nav">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:muftiarifudintaqy0@gmail.com"><i class="fas fa-envelope"></i> muftiarifudintaqy0@gmail.com</a></li>
+          <li><a href="https://github.com/muftiarifudintaqy" target="_blank"><i class="fab fa-github"></i> github.com/muftiarifudintaqy</a></li>
+          <li><a href="https://www.linkedin.com/in/muftiarifudintaqy-kechee-abiezzzz" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn Profile</a></li>
+          <li><a href="https://www.instagram.com/muft_zy/" target="_blank"><i class="fab fa-instagram"></i> @muft_zy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-btm">
+      <p>&copy; <span id="yr"></span> Mufti Arifudin Taqy. All rights reserved.</p>
+      <p>Made with <i class="fas fa-heart"></i> and <i class="fas fa-code"></i></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// =============================================
+// PARTICLE NETWORK BACKGROUND
+// =============================================
+(function(){
+  const canvas = document.getElementById('particleCanvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, pts = [];
+
+  function resize(){
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  // Create more particles, bigger, and brighter
+  for(let i=0;i<90;i++){
+    pts.push({
+      x: Math.random()*W, y: Math.random()*H,
+      r: Math.random()*3+1.5,
+      vx:(Math.random()-0.5)*0.5,
+      vy:(Math.random()-0.5)*0.5,
+      pulse: Math.random()*Math.PI*2
+    });
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
+    // Brighter colors for both modes
+    const dotColor = isDark ? '255,120,70' : '200,40,40';
+    const lineColor = isDark ? '255,120,70' : '180,40,40';
+    const dotAlpha = isDark ? 0.85 : 0.6;
+    const lineAlphaMax = isDark ? 0.5 : 0.35;
+
+    pts.forEach(p=>{
+      p.x+=p.vx; p.y+=p.vy;
+      p.pulse+=0.04;
+      if(p.x<0)p.x=W; if(p.x>W)p.x=0;
+      if(p.y<0)p.y=H; if(p.y>H)p.y=0;
+      // Pulsing glow dot
+      const pulse = 0.6 + Math.sin(p.pulse)*0.4;
+      // Outer glow
+      const grad = ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*4);
+      grad.addColorStop(0, `rgba(${dotColor},${dotAlpha*pulse})`);
+      grad.addColorStop(1, `rgba(${dotColor},0)`);
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r*4,0,Math.PI*2);
+      ctx.fillStyle=grad; ctx.fill();
+      // Core dot
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(${dotColor},${dotAlpha})`; ctx.fill();
+    });
+
+    // Connect lines — wider threshold = more visible network
+    for(let i=0;i<pts.length;i++){
+      for(let j=i+1;j<pts.length;j++){
+        const dx=pts[i].x-pts[j].x, dy=pts[i].y-pts[j].y;
+        const d=Math.sqrt(dx*dx+dy*dy);
+        if(d<160){
+          const a = lineAlphaMax*(1-d/160);
+          ctx.beginPath();
+          ctx.moveTo(pts[i].x,pts[i].y);
+          ctx.lineTo(pts[j].x,pts[j].y);
+          ctx.strokeStyle=`rgba(${lineColor},${a})`;
+          ctx.lineWidth=0.8;
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+// =============================================
+// THEME TOGGLE — Fix logo in light/dark
+// =============================================
+const themeBtn = document.getElementById('themeBtn');
+const html = document.documentElement;
+
+function applyTheme(t){
+  html.setAttribute('data-theme',t);
+  localStorage.setItem('theme',t);
+}
+applyTheme(localStorage.getItem('theme')||'dark');
+
+themeBtn.addEventListener('click',()=>{
+  applyTheme(html.getAttribute('data-theme')==='dark'?'light':'dark');
+});
+
+// =============================================
+// HAMBURGER MENU
+// =============================================
+const hbg = document.getElementById('hamburger');
+const navMenu = document.getElementById('navMenu');
+hbg.addEventListener('click',()=>{ hbg.classList.toggle('open'); navMenu.classList.toggle('open'); });
+document.querySelectorAll('.nav-link').forEach(l=>l.addEventListener('click',()=>{ hbg.classList.remove('open'); navMenu.classList.remove('open'); }));
+
+// =============================================
+// SMOOTH SCROLL + ACTIVE NAV
+// =============================================
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(!t)return; e.preventDefault();
+    window.scrollTo({top:t.offsetTop-72,behavior:'smooth'});
+  });
+});
+window.addEventListener('scroll',()=>{
+  const pos=window.scrollY+120;
+  document.querySelectorAll('section[id]').forEach(s=>{
+    if(pos>=s.offsetTop && pos<s.offsetTop+s.offsetHeight){
+      document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('active'));
+      const al=document.querySelector(`.nav-link[href="#${s.id}"]`);
+      if(al)al.classList.add('active');
+    }
+  });
+  document.getElementById('header').classList.toggle('scrolled',window.scrollY>50);
+});
+
+// =============================================
+// PROJECT FILTER
+// =============================================
+document.querySelectorAll('.filter-btn').forEach(btn=>{
+  btn.addEventListener('click',function(){
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    this.classList.add('active');
+    const f=this.dataset.filter;
+    document.querySelectorAll('.proj-card').forEach(c=>{
+      const show=f==='all'||c.dataset.category===f;
+      c.style.transition='opacity 0.3s,transform 0.3s';
+      if(show){c.style.display='flex';setTimeout(()=>{c.style.opacity='1';c.style.transform='scale(1)'},10);}
+      else{c.style.opacity='0';c.style.transform='scale(0.9)';setTimeout(()=>c.style.display='none',300);}
+    });
+  });
+});
+
+// =============================================
+// GREETING ANIMATION
+// =============================================
+const greetWords=['Hello','Hi','Hola','Halo'];
+let gi=0;
+const gEl=document.getElementById('greetingWord');
+setInterval(()=>{
+  gEl.classList.add('fade-out');
+  setTimeout(()=>{
+    gi=(gi+1)%greetWords.length;
+    gEl.textContent=greetWords[gi];
+    gEl.classList.remove('fade-out');
+    gEl.classList.add('fade-in');
+    setTimeout(()=>gEl.classList.remove('fade-in'),500);
+  },350);
+},2800);
+
+// =============================================
+// CONTACT FORM — Web3Forms → Gmail langsung
+// Web3Forms gratis, tanpa setup, langsung masuk Gmail
+// =============================================
+document.getElementById('contactForm').addEventListener('submit', async function(e){
+  e.preventDefault();
+
+  const btn  = document.getElementById('formSubmit');
+  const stTxt  = btn.querySelector('.st-txt');
+  const stLoad = btn.querySelector('.st-load');
+  const msg  = document.getElementById('formMsg');
+
+  // --- Ambil data form ---
+  const name    = (this.querySelector('[name="name"]').value || '').trim();
+  const email   = (this.querySelector('[name="email"]').value || '').trim();
+  const subject = (this.querySelector('[name="subject"]').value || 'Portfolio Inquiry').trim();
+  const message = (this.querySelector('[name="message"]').value || '').trim();
+
+  // --- Loading state ---
+  stTxt.style.display  = 'none';
+  stLoad.style.display = 'inline-flex';
+  btn.disabled = true;
+
+  // === STEP 1: Coba Web3Forms (gratis, langsung ke Gmail) ===
+  let sent = false;
+  try {
+    const payload = {
+      // Access key Web3Forms — terhubung ke muftiarifudintaqy0@gmail.com
+      // Daftar gratis di https://web3forms.com dan paste Access Key di sini:
+      access_key: '089d88e5-420f-4360-998a-370336b6978a',
+      name:    name,
+      email:   email,
+      subject: '[Portfolio] ' + subject,
+      message: `Dari: ${name} <${email}>\n\nSubject: ${subject}\n\n${message}`,
+      from_name: 'Mufti Portfolio',
+      botcheck: ''
+    };
+
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    const json = await res.json();
+    if (json.success) {
+      sent = true;
+      msg.className = 'form-msg success';
+      msg.innerHTML = '<i class="fas fa-check-circle"></i> Pesan terkirim! Cek Gmail kamu di muftiarifudintaqy0@gmail.com';
+      this.reset();
+    }
+  } catch(_) {}
+
+  // === STEP 2: Fallback — Formspree (kalau Web3Forms gagal) ===
+  if (!sent) {
+    try {
+      const fd = new FormData();
+      fd.append('name', name);
+      fd.append('email', email);
+      fd.append('subject', '[Portfolio] ' + subject);
+      fd.append('message', message);
+      fd.append('_replyto', email);
+
+      const res2 = await fetch('https://formspree.io/f/muftiarifudintaqy0@gmail.com', {
+        method: 'POST', body: fd, headers: { Accept: 'application/json' }
+      });
+      if (res2.ok) {
+        sent = true;
+        msg.className = 'form-msg success';
+        msg.innerHTML = '<i class="fas fa-check-circle"></i> Pesan terkirim ke Gmail kamu!';
+        this.reset();
+      }
+    } catch(_) {}
+  }
+
+  // === STEP 3: Fallback terakhir — buka Gmail compose langsung ===
+  if (!sent) {
+    const gmailUrl = 'https://mail.google.com/mail/?view=cm'
+      + '&to=muftiarifudintaqy0@gmail.com'
+      + '&su=' + encodeURIComponent('[Portfolio] ' + subject)
+      + '&body=' + encodeURIComponent(
+          'Dari: ' + name + ' <' + email + '>\n\n' + message
+        );
+    window.open(gmailUrl, '_blank');
+    msg.className = 'form-msg info';
+    msg.innerHTML = '<i class="fas fa-info-circle"></i> Gmail dibuka di tab baru — tinggal klik Send di Gmail. Pesan sudah terisi otomatis!';
+  }
+
+  // --- Reset loading state ---
+  stTxt.style.display  = 'inline-flex';
+  stLoad.style.display = 'none';
+  btn.disabled = false;
+  setTimeout(() => { msg.className = 'form-msg'; msg.innerHTML = ''; }, 10000);
+});
+
+// =============================================
+// SKILL BAR ANIMATION
+// =============================================
+new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.querySelectorAll('.sk-fill').forEach(f=>{
+        const delay=parseInt(f.closest('.skill-card').dataset.delay||0)*70;
+        setTimeout(()=>f.style.width=f.dataset.w+'%',delay);
+      });
+    }
+  });
+},{threshold:0.2}).observe(document.querySelector('.skills-grid'));
+
+// =============================================
+// SCROLL REVEAL
+// =============================================
+const revObs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('revealed');revObs.unobserve(e.target);}});
+},{threshold:0.08});
+document.querySelectorAll('.proj-card,.tl-item,.skill-card,.acard,.clink').forEach(el=>{
+  el.classList.add('reveal'); revObs.observe(el);
+});
+
+// =============================================
+// CUSTOM CURSOR
+// =============================================
+if(window.innerWidth>768){
+  const dot=document.getElementById('cursorDot');
+  const ring=document.getElementById('cursorRing');
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
+  (function animR(){rx+=(mx-rx)*0.1;ry+=(my-ry)*0.1;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animR);})();
+  document.querySelectorAll('a,button,.skill-card,.proj-card').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{dot.classList.add('hov');ring.classList.add('hov');});
+    el.addEventListener('mouseleave',()=>{dot.classList.remove('hov');ring.classList.remove('hov');});
+  });
+}
+
+// Footer year
+document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
