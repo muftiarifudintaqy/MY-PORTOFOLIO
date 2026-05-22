@@ -11,9 +11,45 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   <link rel="stylesheet" href="style.css"/>
-  <link rel="icon" type="image/x-icon" href="assets/images/logo.png">
+  <link rel="icon" type="image/png" href="assets/images/logo.png"/>
 </head>
 <body>
+
+<!-- ============================================
+     PROFESSIONAL PAGE LOADER
+     ============================================ -->
+<div id="siteLoader">
+  <div class="loader-bg"></div>
+  <div class="loader-content">
+    <!-- Logo -->
+    <div class="loader-logo">
+      <span class="ll-mufti">Mufti</span><span class="ll-port">Portfolio</span>
+    </div>
+
+    <!-- Animated code lines (decorative) -->
+    <div class="loader-code">
+      <span class="lc-line" style="--d:0s"><span class="lc-k">const</span> <span class="lc-v">developer</span> = <span class="lc-s">'Mufti Arifudin Taqy'</span>;</span>
+      <span class="lc-line" style="--d:0.2s"><span class="lc-k">const</span> <span class="lc-v">specialties</span> = [<span class="lc-s">'Full-Stack Development'</span>, <span class="lc-s">'Flutter'</span>,];</span>
+      <span class="lc-line" style="--d:0.4s"><span class="lc-k">const</span> <span class="lc-v">experience</span> = <span class="lc-n">Backpacking & exploring</span>; <span class="lc-c">20+countries</span></span>
+      <span class="lc-line" style="--d:0.6s"><span class="lc-fn">loadPortfolio</span>(<span class="lc-v">developer</span>);</span>
+    </div>
+
+    <!-- Progress bar -->
+    <div class="loader-bar-wrap">
+      <div class="loader-bar" id="loaderBar"></div>
+    </div>
+    <div class="loader-pct" id="loaderPct">0%</div>
+
+    <!-- Status text -->
+    <div class="loader-status" id="loaderStatus">Initializing...</div>
+  </div>
+
+  <!-- Corner decorations -->
+  <div class="loader-corner lc-tl"></div>
+  <div class="loader-corner lc-tr"></div>
+  <div class="loader-corner lc-bl"></div>
+  <div class="loader-corner lc-br"></div>
+</div>
 
 <!-- PARTICLE CANVAS — always behind everything -->
 <canvas id="particleCanvas"></canvas>
@@ -179,10 +215,10 @@
       </div>
       <div class="about-text-col">
         <p class="about-lead">I'm a <strong>Software Developer</strong> who believes great code is built the same way great journeys are — through curiosity, iteration, and a relentless pursuit of quality.</p>
-        <p class="about-body">Currently honing my craft at <strong>IDN Backpacker School Sentul</strong>, where technology education meets a global mindset. My development philosophy blends clean architecture with real-world user needs.</p>
-        <p class="about-body">Beyond the screen, I'm a passionate backpacker and tech enthusiast who has explored countries who has absorbed cultural perspectives from <strong>20+ countries</strong> — from the modern skyline of Malaysia’s Kuala Lumpur to hidden cultural gems discovered throughout my travel journey. Every trip has strengthened my adaptability, communication, and understanding of diverse people and environments. These experiences shape how I build digital products: with creativity, problem-solving, and a user-focused mindset that connects technology with real human experiences.</p>
+        <p class="about-body">Currently honing my craft at <strong>IDN Boarding School</strong>, where technology education meets a global mindset. My development philosophy blends clean architecture with real-world user needs.</p>
+        <p class="about-body">Beyond coding, I'm passionate about backpacking and exploring cultures across <strong>20+ countries</strong> —  From the vibrant skyline of Kuala Lumpur to hidden cultural gems throughout my journey, each experience has strengthened my adaptability, communication, and understanding of diverse perspectives. These experiences inspire how I build digital products — combining creativity, problem-solving, and user-focused thinking to create meaningful digital experiences.</p>
         <div class="about-cards">
-          <div class="acard"><div class="acard-icon"><i class="fas fa-layer-group"></i></div><div><h4>Full-Stack Dev</h4><p>Web & Mobile</p></div></div>
+          <div class="acard"><div class="acard-icon"><i class="fas fa-layer-group"></i></div><div><h4>Full-Stack Development</h4><p>Web & Mobile</p></div></div>
           <div class="acard"><div class="acard-icon"><i class="fas fa-graduation-cap"></i></div><div><h4>IDN Boarding School</h4><p>Sentul, Indonesia</p></div></div>
           <div class="acard"><div class="acard-icon"><i class="fas fa-plane"></i></div><div><h4>20+ Countries</h4><p>Global Explorer</p></div></div>
         </div>
@@ -629,7 +665,7 @@ document.querySelectorAll('.filter-btn').forEach(btn=>{
 // =============================================
 // GREETING ANIMATION
 // =============================================
-const greetWords=['Hello','Hi','Hola','Halo','Bonjour','Ciao'];
+const greetWords=['Hello','Hi','Hola','Halo',];
 let gi=0;
 const gEl=document.getElementById('greetingWord');
 setInterval(()=>{
@@ -775,6 +811,82 @@ if(window.innerWidth>768){
     el.addEventListener('mouseleave',()=>{dot.classList.remove('hov');ring.classList.remove('hov');});
   });
 }
+
+// =============================================
+// PAGE LOADER — 3 second professional entry
+// =============================================
+(function(){
+  const loader   = document.getElementById('siteLoader');
+  const bar      = document.getElementById('loaderBar');
+  const pct      = document.getElementById('loaderPct');
+  const status   = document.getElementById('loaderStatus');
+
+  // Add loading class to body
+  document.body.classList.add('loading');
+
+  const steps = [
+    { p: 12, s: 'Loading assets...' },
+    { p: 28, s: 'Building UI...' },
+    { p: 47, s: 'Connecting services...' },
+    { p: 63, s: 'Rendering particles...' },
+    { p: 80, s: 'Almost there...' },
+    { p: 95, s: 'Polishing details...' },
+    { p: 100, s: 'Welcome!' },
+  ];
+
+  let step = 0;
+  let current = 0;
+
+  function setProgress(target) {
+    // Animate smoothly to target
+    const tick = () => {
+      if (current < target) {
+        current = Math.min(current + 1, target);
+        bar.style.width = current + '%';
+        pct.textContent = current + '%';
+        requestAnimationFrame(tick);
+      }
+    };
+    requestAnimationFrame(tick);
+  }
+
+  function runStep() {
+    if (step >= steps.length) return;
+    const s = steps[step];
+    setProgress(s.p);
+    status.textContent = s.s;
+    step++;
+
+    if (step < steps.length) {
+      // Variable speed — faster at start, slower near end for drama
+      const delays = [280, 350, 380, 420, 380, 420, 0];
+      setTimeout(runStep, delays[step - 1] || 300);
+    } else {
+      // Loader complete — fade out after brief pause
+      setTimeout(finishLoader, 500);
+    }
+  }
+
+  function finishLoader() {
+    loader.classList.add('loader-done');
+    document.body.classList.remove('loading');
+    document.body.classList.add('loaded');
+    // Remove from DOM after transition
+    setTimeout(() => loader.remove(), 700);
+  }
+
+  // Kick off after fonts/icons likely loaded
+  setTimeout(runStep, 300);
+
+  // Safety net: force complete after 5 seconds (slow network)
+  setTimeout(() => {
+    if (!loader.classList.contains('loader-done')) {
+      setProgress(100);
+      status.textContent = 'Welcome!';
+      setTimeout(finishLoader, 400);
+    }
+  }, 5000);
+})();
 
 // Footer year
 document.getElementById('yr').textContent=new Date().getFullYear();
