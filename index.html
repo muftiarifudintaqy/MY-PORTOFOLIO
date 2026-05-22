@@ -11,7 +11,6 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   <link rel="stylesheet" href="style.css"/>
-  <link rel="icon" href="assets/images/logo.png" type="image/png"/>
 </head>
 <body>
 
@@ -42,13 +41,70 @@
           <i class="fas fa-sun sun-icon"></i>
           <i class="fas fa-moon moon-icon"></i>
         </button>
-        <button class="hamburger" id="hamburger" aria-label="Menu">
+        <button class="hamburger" id="hamburger" aria-label="Open menu">
           <span></span><span></span><span></span>
         </button>
       </div>
     </nav>
   </div>
 </header>
+
+<!-- MOBILE NAV OVERLAY — separate from header, z-index 1100 -->
+<div class="nav-overlay" id="navOverlay">
+  <div class="nav-overlay-bg" id="navBg"></div>
+  <div class="nav-drawer" id="navDrawer">
+    <!-- Drawer Header -->
+    <div class="nav-drawer-header">
+      <span class="nav-drawer-logo"><span class="dm">Mufti</span><span class="dp">Portfolio</span></span>
+      <button class="nav-close-btn" id="navClose" aria-label="Close menu">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <!-- Nav Links -->
+    <div class="nav-drawer-links" id="navDrawerLinks">
+      <a href="#home" class="nav-drawer-link active-mobile">
+        <span class="link-num">01</span>
+        <span>Home</span>
+        <i class="fas fa-arrow-right link-arrow"></i>
+      </a>
+      <a href="#about" class="nav-drawer-link">
+        <span class="link-num">02</span>
+        <span>About</span>
+        <i class="fas fa-arrow-right link-arrow"></i>
+      </a>
+      <a href="#skills" class="nav-drawer-link">
+        <span class="link-num">03</span>
+        <span>Skills</span>
+        <i class="fas fa-arrow-right link-arrow"></i>
+      </a>
+      <a href="#projects" class="nav-drawer-link">
+        <span class="link-num">04</span>
+        <span>Projects</span>
+        <i class="fas fa-arrow-right link-arrow"></i>
+      </a>
+      <a href="#experience" class="nav-drawer-link">
+        <span class="link-num">05</span>
+        <span>Experience</span>
+        <i class="fas fa-arrow-right link-arrow"></i>
+      </a>
+      <a href="#contact" class="nav-drawer-link">
+        <span class="link-num">06</span>
+        <span>Contact</span>
+        <i class="fas fa-arrow-right link-arrow"></i>
+      </a>
+    </div>
+    <!-- Drawer Footer -->
+    <div class="nav-drawer-footer">
+      <p>Connect with me</p>
+      <div class="nav-drawer-socials">
+        <a href="https://github.com/muftiarifudintaqy" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/muftiarifudintaqy-kechee-abiezzzz" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.instagram.com/muft_zy/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="mailto:muftiarifudintaqy0@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- HERO -->
 <section id="home" class="hero">
@@ -123,7 +179,7 @@
       <div class="about-text-col">
         <p class="about-lead">I'm a <strong>Software Developer</strong> who believes great code is built the same way great journeys are — through curiosity, iteration, and a relentless pursuit of quality.</p>
         <p class="about-body">Currently honing my craft at <strong>IDN Backpacker School Sentul</strong>, where technology education meets a global mindset. My development philosophy blends clean architecture with real-world user needs.</p>
-        <p class="about-body">Beyond the screen, I'm a passionate backpacker and tech enthusiast who has explored countries across Southeast Asia from the modern — <strong>20+ countries</strong> — from Malaysia Kuala Lumpur to hidden cultural gems discovered throughout my travel journey. Every trip has strengthened my adaptability, communication, and understanding of diverse people and environments. These experiences shape how I build digital products: with creativity, problem-solving, and a user-focused mindset that connects technology with real human experiences.</p>
+        <p class="about-body">Beyond the screen, I'm a passionate backpacker and tech enthusiast who has explored countries who has absorbed cultural perspectives from <strong>20+ countries</strong> — from the modern skyline of Malaysia’s Kuala Lumpur to hidden cultural gems discovered throughout my travel journey. Every trip has strengthened my adaptability, communication, and understanding of diverse people and environments. These experiences shape how I build digital products: with creativity, problem-solving, and a user-focused mindset that connects technology with real human experiences.</p>
         <div class="about-cards">
           <div class="acard"><div class="acard-icon"><i class="fas fa-layer-group"></i></div><div><h4>Full-Stack Dev</h4><p>Web & Mobile</p></div></div>
           <div class="acard"><div class="acard-icon"><i class="fas fa-graduation-cap"></i></div><div><h4>IDN Boarding School</h4><p>Sentul, Indonesia</p></div></div>
@@ -482,17 +538,58 @@ themeBtn.addEventListener('click',()=>{
 });
 
 // =============================================
-// HAMBURGER MENU
+// MOBILE NAV DRAWER — slide-in from right
 // =============================================
-const hbg = document.getElementById('hamburger');
-const navMenu = document.getElementById('navMenu');
-hbg.addEventListener('click',()=>{ hbg.classList.toggle('open'); navMenu.classList.toggle('open'); });
-document.querySelectorAll('.nav-link').forEach(l=>l.addEventListener('click',()=>{ hbg.classList.remove('open'); navMenu.classList.remove('open'); }));
+const hamburger   = document.getElementById('hamburger');
+const navOverlay  = document.getElementById('navOverlay');
+const navClose    = document.getElementById('navClose');
+const navBg       = document.getElementById('navBg');
+const drawerLinks = document.querySelectorAll('.nav-drawer-link');
+
+function openNav() {
+  navOverlay.classList.add('open');
+  hamburger.classList.add('open');
+  document.body.style.overflow = 'hidden'; // prevent background scroll
+}
+function closeNav() {
+  navOverlay.classList.remove('open');
+  hamburger.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+hamburger.addEventListener('click', openNav);
+navClose.addEventListener('click', closeNav);
+navBg.addEventListener('click', closeNav); // tap backdrop to close
+
+// Close on link click + smooth scroll
+drawerLinks.forEach(link => {
+  link.addEventListener('click', (e) => {
+    const href = link.getAttribute('href');
+    if (href && href.startsWith('#')) {
+      e.preventDefault();
+      closeNav();
+      setTimeout(() => {
+        const target = document.querySelector(href);
+        if (target) {
+          window.scrollTo({ top: target.offsetTop - 72, behavior: 'smooth' });
+        }
+      }, 320); // wait for drawer to close first
+    }
+    // Update active state
+    drawerLinks.forEach(l => l.classList.remove('active-mobile'));
+    link.classList.add('active-mobile');
+  });
+});
+
+// Close on Escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeNav();
+});
 
 // =============================================
-// SMOOTH SCROLL + ACTIVE NAV
+// SMOOTH SCROLL + ACTIVE NAV (desktop only)
 // =============================================
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
+document.querySelectorAll('a[href^="#"]:not(.nav-drawer-link)').forEach(a=>{
   a.addEventListener('click',e=>{
     const t=document.querySelector(a.getAttribute('href'));
     if(!t)return; e.preventDefault();
@@ -531,7 +628,7 @@ document.querySelectorAll('.filter-btn').forEach(btn=>{
 // =============================================
 // GREETING ANIMATION
 // =============================================
-const greetWords=['Hello','Hi','Hola','Halo'];
+const greetWords=['Hello','Hi','Hola','Halo','Bonjour','Ciao'];
 let gi=0;
 const gEl=document.getElementById('greetingWord');
 setInterval(()=>{
