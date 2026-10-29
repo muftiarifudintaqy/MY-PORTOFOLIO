@@ -33,7 +33,6 @@
     <div class="ld-role">Full Stack Developer</div>
     <div class="ld-meta"><div class="ld-line"><span id="loaderBar"></span></div><span class="ld-pct" id="loaderPct">0%</span></div>
   </div>
-  <div class="ld-curtain"></div>
 </div>
 
 <!-- PARTICLE CANVAS — always behind everything -->
@@ -913,7 +912,7 @@ if(window.innerWidth>768){
       loader.classList.add('loader-done');
       document.body.classList.remove('loading');
       document.body.classList.add('loaded');
-      setTimeout(() => loader.remove(), 1000);
+      setTimeout(() => loader.remove(), 1300);
     }, 180);
   }
   if (document.readyState === 'complete') ready = true;
