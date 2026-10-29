@@ -26,6 +26,8 @@
         <defs><linearGradient id="ldGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5E5CE6"/><stop offset=".55" stop-color="#BF5AF2"/><stop offset="1" stop-color="#FF6482"/></linearGradient></defs>
         <circle class="ld-track" cx="60" cy="60" r="54"/>
         <circle class="ld-ring" id="loaderRing" cx="60" cy="60" r="54"/>
+        <g class="ld-spin"><circle cx="60" cy="60" r="44" class="ld-arcs"/></g>
+        <g class="ld-spin2"><circle cx="60" cy="60" r="35" class="ld-ticks"/></g>
       </svg>
       <span class="ld-mono">MT</span>
     </div>
@@ -908,11 +910,13 @@ if(window.innerWidth>768){
   }
   function finish(){
     if (done) return; done = true;
+    const mk = loader.querySelector('.ld-mark');
+    if (mk) { const r = mk.getBoundingClientRect(); loader.style.setProperty('--cx', (r.left + r.width/2) + 'px'); loader.style.setProperty('--cy', (r.top + r.height/2) + 'px'); }
     setTimeout(() => {
       loader.classList.add('loader-done');
       document.body.classList.remove('loading');
       document.body.classList.add('loaded');
-      setTimeout(() => loader.remove(), 1300);
+      setTimeout(() => loader.remove(), 1900);
     }, 180);
   }
   if (document.readyState === 'complete') ready = true;
