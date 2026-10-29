@@ -773,6 +773,8 @@ header, section, footer { position:relative; z-index:1; }
 }
 .flutter-badge { background:rgba(66,122,225,0.88); color:#fff; }
 .web-badge { background:rgba(255,92,53,0.88); color:#fff; }
+.biz-badge { background:rgba(124,92,255,0.9); color:#fff; }
+.proj-private { opacity:.75; cursor:default; }
 .proj-body { padding:22px; display:flex; flex-direction:column; gap:12px; flex:1; }
 .proj-title { font-size:1.15rem; font-weight:800; color:var(--text); }
 .proj-desc { font-size:0.88rem; color:var(--text2); line-height:1.75; flex:1; }
