@@ -20,11 +20,20 @@
      ============================================ -->
 <div id="siteLoader">
   <div class="loader-bg"></div>
-  <div class="ld-wrap" role="status" aria-label="Memuat portofolio">
-        <div class="ld-name">Mufti Arifudin Taqy</div>
+  <div class="ld-wrap" role="status" aria-label="Loading portfolio">
+    <div class="ld-mark">
+      <svg viewBox="0 0 120 120" aria-hidden="true">
+        <defs><linearGradient id="ldGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5E5CE6"/><stop offset=".55" stop-color="#BF5AF2"/><stop offset="1" stop-color="#FF6482"/></linearGradient></defs>
+        <circle class="ld-track" cx="60" cy="60" r="54"/>
+        <circle class="ld-ring" id="loaderRing" cx="60" cy="60" r="54"/>
+      </svg>
+      <span class="ld-mono">MT</span>
+    </div>
+    <div class="ld-name"><span>Mufti</span> <span>Arifudin</span> <span>Taqy</span></div>
     <div class="ld-role">Full Stack Developer</div>
-    <div class="ld-line"><span id="loaderBar"></span></div>
+    <div class="ld-meta"><div class="ld-line"><span id="loaderBar"></span></div><span class="ld-pct" id="loaderPct">0%</span></div>
   </div>
+  <div class="ld-curtain"></div>
 </div>
 
 <!-- PARTICLE CANVAS — always behind everything -->
@@ -291,6 +300,22 @@
           <span class="proj-cta proj-private"><i class="fas fa-lock"></i> Internal system</span>
         </div>
       </div>
+      <div class="proj-card" data-category="web">
+        <div class="proj-img-wrap">
+          <img src="assets/images/proj-company.jpg" alt="Montera Group company profile" loading="lazy"/>
+          <div class="proj-overlay"><a href="https://montera-group.vercel.app" target="_blank" class="overlay-btn"><i class="fas fa-arrow-up-right-from-square"></i> Visit Site</a></div>
+          <div class="proj-badge biz-badge"><i class="fas fa-briefcase"></i> Montera Group</div>
+        </div>
+        <div class="proj-body">
+          <h3 class="proj-title">Montera Company Profile</h3>
+          <p class="proj-desc">Corporate website for Montera Strategic Group, the company behind Skinlyfe and Prepare. Clean, brand-consistent design covering About, Vision, Culture, Life at Montera, Careers and the brand portfolio — fully responsive and deployed on Vercel.</p>
+          <div class="proj-tech"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Vercel</span></div>
+          <div class="proj-ctas">
+            <a href="https://montera-group.vercel.app" class="proj-cta" target="_blank"><i class="fas fa-arrow-up-right-from-square"></i> Visit Site</a>
+            <a href="https://github.com/muftiarifudintaqy/Company_profile_montera" class="proj-cta" target="_blank"><i class="fab fa-github"></i> Source Code</a>
+          </div>
+        </div>
+      </div>
       <div class="proj-card" data-category="business">
         <div class="proj-img-wrap">
           <img src="assets/images/proj-lp.jpg" alt="Landing pages and link in bio" loading="lazy"/>
@@ -308,13 +333,13 @@
         <div class="proj-img-wrap">
           <img src="assets/images/proj-affiliate.jpg" alt="Affiliate WhatsApp inbox" loading="lazy"/>
           
-          <div class="proj-badge biz-badge"><i class="fas fa-briefcase"></i> Prepare · Beta</div>
+          <div class="proj-badge biz-badge"><i class="fas fa-briefcase"></i> Prepare</div>
         </div>
         <div class="proj-body">
-          <h3 class="proj-title">Affiliate WhatsApp Inbox <span class="proj-beta">Beta</span></h3>
+          <h3 class="proj-title">Affiliate WhatsApp Inbox</h3>
           <p class="proj-desc">A WhatsApp-Web-style inbox that brings six affiliate team numbers into one screen: contact names and photos, unread/unanswered filters, reply time per chat, edit &amp; delete history, and an audit log of every message sent from the web.</p>
           <div class="proj-tech"><span>Node.js</span><span>Baileys</span><span>MySQL</span><span>JavaScript</span></div>
-          <span class="proj-cta proj-private"><i class="fas fa-flask"></i> In development</span>
+          <span class="proj-cta proj-private"><i class="fas fa-lock"></i> Internal system</span>
         </div>
       </div>
       <!-- E-commerce -->
@@ -856,27 +881,45 @@ if(window.innerWidth>768){
 }
 
 // =============================================
-// PAGE LOADER — 3 second professional entry
+// PAGE LOADER — ring + counter, curtain exit
 // =============================================
 (function(){
   const loader = document.getElementById('siteLoader');
-  const bar    = document.getElementById('loaderBar');
+  const bar  = document.getElementById('loaderBar');
+  const ring = document.getElementById('loaderRing');
+  const pct  = document.getElementById('loaderPct');
+  const C = 2 * Math.PI * 54;
+  if (ring) { ring.style.strokeDasharray = C; ring.style.strokeDashoffset = C; }
   document.body.classList.add('loading');
-  let done = false;
-  function finishLoader() {
+  let shown = 0, target = 0, done = false, ready = false;
+  const t0 = performance.now(), MIN = 1400;
+  function paint(v){
+    bar.style.width = v + '%';
+    if (ring) ring.style.strokeDashoffset = C * (1 - v / 100);
+    pct.textContent = Math.round(v) + '%';
+  }
+  function tick(){
+    const el = performance.now() - t0;
+    target = ready && el > MIN ? 100 : Math.min(90, 90 * (1 - Math.exp(-el / 900)));
+    shown += (target - shown) * 0.12;
+    if (target === 100 && shown > 99.4) shown = 100;
+    paint(shown);
+    if (shown >= 100) return finish();
+    requestAnimationFrame(tick);
+  }
+  function finish(){
     if (done) return; done = true;
-    bar.style.width = '100%';
     setTimeout(() => {
       loader.classList.add('loader-done');
       document.body.classList.remove('loading');
       document.body.classList.add('loaded');
-      setTimeout(() => loader.remove(), 700);
-    }, 250);
+      setTimeout(() => loader.remove(), 1000);
+    }, 180);
   }
-  requestAnimationFrame(() => { bar.style.width = '70%'; });
-  if (document.readyState === 'complete') setTimeout(finishLoader, 700);
-  else window.addEventListener('load', () => setTimeout(finishLoader, 500));
-  setTimeout(finishLoader, 2500);
+  if (document.readyState === 'complete') ready = true;
+  else window.addEventListener('load', () => { ready = true; });
+  setTimeout(() => { ready = true; }, 3500);
+  requestAnimationFrame(tick);
 })();
 
 // Footer year

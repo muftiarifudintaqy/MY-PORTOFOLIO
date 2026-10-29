@@ -1231,12 +1231,38 @@ header, .header, #header { backdrop-filter: saturate(180%) blur(20px); -webkit-b
 .cursor-dot { background: var(--text) !important; }
 
 /* Loader ala Apple */
-#siteLoader .loader-bg { background: var(--bg); }
-.ld-wrap { position:relative; z-index:1; display:flex; flex-direction:column; align-items:center; gap:14px; text-align:center; }
-.ld-name { font-family:var(--font); font-weight:700; font-size:clamp(1.6rem,3.4vw,2.4rem); letter-spacing:-.03em; color:var(--text);
-  animation: ldIn .9s cubic-bezier(.2,.8,.2,1) both; }
-.ld-role { font-family:var(--font); font-size:1rem; color:var(--text2); animation: ldIn .9s cubic-bezier(.2,.8,.2,1) .12s both; }
-.ld-line { width:min(160px,50vw); height:3px; background:var(--border); border-radius:3px; overflow:hidden; margin-top:10px; }
-.ld-line span { display:block; height:100%; width:0; border-radius:3px; background: linear-gradient(90deg,#5E5CE6,#BF5AF2,#FF6482); transition:width .35s cubic-bezier(.2,.8,.2,1); }
-@keyframes ldIn { from { opacity:0; transform:translateY(10px); filter:blur(4px); } to { opacity:1; transform:none; filter:none; } }
-@media (prefers-reduced-motion: reduce) { .ld-name,.ld-role { animation:none; } html { scroll-behavior:auto; } }
+#siteLoader .loader-bg { background: radial-gradient(ellipse at 50% 42%, #101014 0%, #000 72%); }
+#siteLoader { transition: none; }
+#siteLoader.loader-done { opacity:1; visibility:visible; }
+#siteLoader .loader-bg, #siteLoader .ld-wrap { transition: opacity .55s ease, transform .8s cubic-bezier(.7,0,.2,1); }
+#siteLoader.loader-done .ld-wrap { opacity:0; transform: translateY(-24px) scale(.98); }
+#siteLoader.loader-done .loader-bg { transform: translateY(-100%); transition-delay:.18s; }
+.ld-curtain { position:absolute; inset:0; background:linear-gradient(180deg,#5E5CE6,#BF5AF2); transform:translateY(100%); pointer-events:none; }
+#siteLoader.loader-done .ld-curtain { animation: ldCurtain .9s cubic-bezier(.7,0,.2,1) forwards; }
+@keyframes ldCurtain { 0%{transform:translateY(100%)} 45%{transform:translateY(0)} 100%{transform:translateY(-100%)} }
+#siteLoader.loader-done { pointer-events:none; animation: ldGone .01s linear .95s forwards; }
+@keyframes ldGone { to { visibility:hidden; } }
+
+.ld-wrap { position:relative; z-index:1; display:flex; flex-direction:column; align-items:center; text-align:center; gap:0; }
+.ld-mark { position:relative; width:92px; height:92px; margin-bottom:26px; animation: ldIn .8s cubic-bezier(.2,.8,.2,1) both; }
+.ld-mark svg { width:100%; height:100%; transform:rotate(-90deg); }
+.ld-track { fill:none; stroke:rgba(255,255,255,.08); stroke-width:2.5; }
+.ld-ring { fill:none; stroke:url(#ldGrad); stroke-width:2.5; stroke-linecap:round; filter: drop-shadow(0 0 6px rgba(191,90,242,.45)); }
+.ld-mono { position:absolute; inset:0; display:grid; place-items:center; font-family:var(--font); font-weight:700; font-size:1.55rem; letter-spacing:-.02em; color:#F5F5F7; }
+.ld-name { font-family:var(--font); font-weight:700; font-size:clamp(1.7rem,3.6vw,2.6rem); letter-spacing:-.035em; color:#F5F5F7; line-height:1.1; overflow:hidden; padding-bottom:2px; }
+.ld-name span { display:inline-block; animation: ldUp .9s cubic-bezier(.2,.8,.2,1) both; }
+.ld-name span:nth-child(1){animation-delay:.15s} .ld-name span:nth-child(2){animation-delay:.25s} .ld-name span:nth-child(3){animation-delay:.35s}
+.ld-role { margin-top:12px; font-family:var(--mono); font-size:.72rem; letter-spacing:.32em; text-transform:uppercase; color:#A1A1A6; animation: ldIn .9s cubic-bezier(.2,.8,.2,1) .5s both; }
+.ld-meta { margin-top:30px; display:flex; align-items:center; gap:14px; animation: ldIn .9s ease .6s both; }
+.ld-line { width:min(180px,46vw); height:2px; background:rgba(255,255,255,.09); border-radius:2px; overflow:hidden; }
+.ld-line span { display:block; height:100%; width:0; border-radius:2px; background:linear-gradient(90deg,#5E5CE6,#BF5AF2,#FF6482); }
+.ld-pct { font-family:var(--mono); font-size:.72rem; color:#6E6E73; min-width:3.2ch; text-align:left; font-variant-numeric:tabular-nums; }
+@keyframes ldUp { from{transform:translateY(110%)} to{transform:none} }
+@keyframes ldIn { from{opacity:0; transform:translateY(10px)} to{opacity:1; transform:none} }
+.proj-ctas { display:flex; gap:10px; flex-wrap:wrap; }
+@media (prefers-reduced-motion: reduce) {
+  .ld-mark,.ld-name span,.ld-role,.ld-meta { animation:none; }
+  #siteLoader.loader-done .ld-curtain { animation:none; }
+  #siteLoader.loader-done { opacity:0; transition:opacity .3s; }
+  html { scroll-behavior:auto; }
+}
