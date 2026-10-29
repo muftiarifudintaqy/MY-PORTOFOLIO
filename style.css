@@ -1266,3 +1266,5 @@ header, .header, #header { backdrop-filter: saturate(180%) blur(20px); -webkit-b
   #siteLoader.loader-done { opacity:0; transition:opacity .3s; }
   html { scroll-behavior:auto; }
 }
+
+.about-img { object-position: center 18%; }
