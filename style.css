@@ -1267,4 +1267,4 @@ header, .header, #header { backdrop-filter: saturate(180%) blur(20px); -webkit-b
   html { scroll-behavior:auto; }
 }
 
-.about-img { object-position: center 18%; }
+.about-img { object-position: center 35%; }
