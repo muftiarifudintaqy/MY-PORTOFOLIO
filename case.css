@@ -1,0 +1,51 @@
+:root{--bg:#000;--bg2:#0b0b0d;--card:#141416;--line:rgba(255,255,255,.09);--text:#f5f5f7;--text2:#a1a1a6;--text3:#6e6e73;--ac:#6E6CF0;--ac2:#BF5AF2;
+--font:-apple-system,BlinkMacSystemFont,'SF Pro Display','Inter','Plus Jakarta Sans',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace}
+@media (prefers-color-scheme: light){:root{--bg:#f5f5f7;--bg2:#fff;--card:#fff;--line:rgba(0,0,0,.08);--text:#1d1d1f;--text2:#515154;--text3:#86868b}}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:860px;margin:0 auto;padding:0 22px}
+.top{position:sticky;top:0;z-index:10;backdrop-filter:saturate(180%) blur(18px);-webkit-backdrop-filter:saturate(180%) blur(18px);background:color-mix(in srgb,var(--bg) 78%,transparent);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;height:58px}
+.brand{font-weight:800;letter-spacing:-.02em;text-decoration:none}.brand span{color:var(--ac)}
+.back{font-size:.88rem;color:var(--text2);text-decoration:none}.back:hover{color:var(--text)}
+.hero{padding:72px 0 36px}
+.eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ac)}
+h1{font-size:clamp(2rem,5vw,3.2rem);line-height:1.08;letter-spacing:-.035em;margin:12px 0 16px}
+.lede{font-size:1.12rem;color:var(--text2);max-width:680px}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.meta span{font-family:var(--mono);font-size:.74rem;padding:5px 11px;border-radius:999px;border:1px solid var(--line);color:var(--text2)}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:34px 0 8px}
+.fact{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 18px}
+.fact b{display:block;font-size:.72rem;font-family:var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--text3);margin-bottom:4px}
+.shot{margin:34px 0 6px;border-radius:18px;overflow:hidden;border:1px solid var(--line)}
+.shot img{display:block;width:100%;height:auto}
+.cap{font-size:.8rem;color:var(--text3);margin-top:8px}
+section{padding:40px 0;border-top:1px solid var(--line)}
+section:first-of-type{border-top:0}
+h2{font-size:1.5rem;letter-spacing:-.025em;margin-bottom:14px;display:flex;align-items:baseline;gap:12px}
+h2 .n{font-family:var(--mono);font-size:.78rem;color:var(--ac);font-weight:500}
+p+p{margin-top:12px}
+p,li{color:var(--text2)}
+strong{color:var(--text)}
+ul.list{list-style:none;display:grid;gap:10px;margin-top:6px}
+ul.list li{position:relative;padding-left:22px}
+ul.list li::before{content:"";position:absolute;left:4px;top:.72em;width:7px;height:7px;border-radius:50%;background:linear-gradient(135deg,var(--ac),var(--ac2))}
+.flow{display:flex;flex-wrap:nowrap;align-items:stretch;gap:8px;margin:18px 0 6px}
+.node{flex:1 1 0;min-width:0;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;position:relative}
+.node b{display:block;color:var(--text);font-size:.92rem;margin-bottom:3px}
+.node small{color:var(--text3);font-size:.78rem;line-height:1.45;display:block}
+.node.hl{border-color:color-mix(in srgb,var(--ac) 55%,transparent);box-shadow:0 0 0 1px color-mix(in srgb,var(--ac) 25%,transparent) inset}
+.arrow{align-self:center;color:var(--text3);font-family:var(--mono)}
+.ch{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px;margin-top:12px}
+.ch h3{font-size:1rem;margin-bottom:6px}
+.ch p{font-size:.95rem}
+.ch .fix{margin-top:8px;color:var(--text)}
+.ch .fix::before{content:"Fix → ";color:var(--ac);font-weight:600}
+.note{font-size:.84rem;color:var(--text3);border-left:2px solid var(--ac);padding:4px 0 4px 12px;margin-top:16px}
+.next{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:40px 0 70px;border-top:1px solid var(--line)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;border:1px solid var(--line)}
+.btn.pri{background:var(--text);color:var(--bg);border-color:var(--text)}
+@media (max-width:720px){.flow{flex-direction:column}.arrow{transform:rotate(90deg);align-self:center;line-height:1}.hero{padding:48px 0 24px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}

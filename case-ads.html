@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Ads Reporting Automation · Case Study · Mufti Arifudin Taqy</title>
+<meta name="description" content="Daily, hands-off reporting for 40+ Meta ad accounts across several Business Portfolios, synced two-way with the team’s Google Sheets and a web dashboard."/>
+<link rel="icon" type="image/png" href="assets/images/logo.png"/>
+<link rel="stylesheet" href="case.css"/>
+</head>
+<body>
+<header class="top"><div class="wrap"><a class="brand" href="index.html">Mufti<span>Portfolio</span></a><a class="back" href="index.html#projects">← All projects</a></div></header>
+<main class="wrap">
+  <div class="hero">
+    <div class="eyebrow">Case study · Internal system</div>
+    <h1>Ads Reporting Automation</h1>
+    <p class="lede">Daily, hands-off reporting for 40+ Meta ad accounts across several Business Portfolios, synced two-way with the team’s Google Sheets and a web dashboard.</p>
+    <div class="meta"><span>Meta Graph / Marketing API</span><span>Google Apps Script</span><span>Google Sheets</span><span>PHP</span><span>MySQL</span></div>
+    <div class="facts"><div class="fact"><b>Role</b>Full Stack Developer (built and maintain)</div><div class="fact"><b>Scope</b>40+ Meta (CPAS) ad accounts, 2 brands</div><div class="fact"><b>Cadence</b>Auto-pull 01:00 & 08:00, validation every morning</div><div class="fact"><b>Users</b>Ads team, owner</div></div>
+    <figure class="shot"><img src="assets/images/proj-ads.jpg" alt="Ads dashboard — per-account cards and funnel breakdown (figures blurred)." loading="lazy"/></figure>
+    <figcaption class="cap">Ads dashboard — per-account cards and funnel breakdown (figures blurred).</figcaption>
+  </div>
+
+  <section><h2><span class="n">01</span>Problem</h2><p>The ads team copied spend, purchases and revenue from dozens of ad accounts into monthly sheets by hand. It was slow, numbers were often missing or wrong for recent days, and every new month meant rebuilding files and formulas.</p><p>The goal: <strong>numbers that match Ads Manager without anyone touching them</strong>, while keeping the team’s existing sheets and formulas.</p></section>
+  <section><h2><span class="n">02</span>Architecture</h2><div class="flow"><div class="node"><b>Meta Graph API</b><small>Spend at campaign level, conversions at account level</small></div><span class="arrow" aria-hidden="true">→</span><div class="node hl"><b>Apps Script</b><small>Per-portfolio tokens, 3-day re-sync, monthly files</small></div><span class="arrow" aria-hidden="true">→</span><div class="node"><b>Google Sheets</b><small>Team’s monthly files & rollup formulas</small></div><span class="arrow" aria-hidden="true">→</span><div class="node hl"><b>Web dashboard</b><small>Local copy of data, edits sync back to sheets</small></div></div><p class="note">Each ad account is read with the System User token of the portfolio that owns it, so no account depends on a single token.</p></section>
+  <section><h2><span class="n">03</span>My contribution</h2><ul class="list"><li>Built the Apps Script that pulls each account daily and writes to the right row and month file, without overwriting formulas.</li><li>Re-syncs the last three days on every run so late-attributed conversions are corrected automatically.</li><li>Auto-creates next month’s file from the current one: dates rebuilt for the new month, inputs cleared, formulas untouched.</li><li>Two-way sync: edits in the sheet reach the dashboard, and changes from the dashboard are written back.</li><li>Safe rollup editing: when an account is added, its reference is inserted into the team’s rollup formula only if the formula pattern is recognised, with a character-level check and a backup for undo.</li><li>Added TikTok Ads validation against the API and a daily "valid up to" status.</li></ul></section>
+  <section><h2><span class="n">04</span>Technical challenges</h2><div class="ch"><h3>Spend not matching Ads Manager</h3><p>Account-level spend included campaigns the team does not count, while conversions were double counted at campaign level.</p><p class="fix">Spend summed at campaign level for active/paused campaigns only, conversions read once at account level with the same attribution window as Ads Manager.</p></div><div class="ch"><h3>Accounts in different portfolios</h3><p>Some accounts returned permission errors (#200) because they were read with the wrong token.</p><p class="fix">Mapped every account to its owning portfolio’s System User token and made the live fetch use the same mapping as the scheduled sync.</p></div><div class="ch"><h3>API rate limits</h3><p>Pulling every account at once hit Meta’s request limit (code 17).</p><p class="fix">Queued requests with back-off and retries; temporary errors are retried instead of being shown as failures.</p></div><div class="ch"><h3>Editing formulas owned by another team</h3><p>The rollup sheet’s formulas belong to the ads team and must not be rewritten.</p><p class="fix">Insert-only change that mirrors the last account’s pattern, verified so the old formula is unchanged apart from the insertion, with automatic backup.</p></div></section>
+  <section><h2><span class="n">05</span>Results</h2><ul class="list"><li>Daily reports for 40+ accounts with no manual copy-paste.</li><li>Morning validation: sheet = dashboard = Meta API for previous days, with zero difference.</li><li>Month rollover happens on its own; the team keeps using the same sheets.</li></ul></section>
+  <section><h2><span class="n">06</span>Evidence</h2><ul class="list"><li>Blurred dashboard screenshot (above).</li><li>Pipeline and token strategy described on this page.</li><li>Script structure and safeguards can be shown in an interview.</li></ul>
+    <p class="note">Internal company system. Source code is private; screenshots are blurred to hide business figures and personal data. Happy to walk through the code and architecture in an interview.</p></section>
+
+  <div class="next"><a class="btn" href="index.html#projects">← Back to projects</a><a class="btn pri" href="case-inbox.html">Next: Affiliate WhatsApp Inbox →</a></div>
+</main>
+</body>
+</html>

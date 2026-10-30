@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Montera ERP · Case Study · Mufti Arifudin Taqy</title>
+<meta name="description" content="One operations platform for two D2C beauty brands: marketplace orders, waybills, payouts, stock, profit, warehouse and HR — reconciled against the source platforms every day."/>
+<link rel="icon" type="image/png" href="assets/images/logo.png"/>
+<link rel="stylesheet" href="case.css"/>
+</head>
+<body>
+<header class="top"><div class="wrap"><a class="brand" href="index.html">Mufti<span>Portfolio</span></a><a class="back" href="index.html#projects">← All projects</a></div></header>
+<main class="wrap">
+  <div class="hero">
+    <div class="eyebrow">Case study · Internal system</div>
+    <h1>Montera ERP</h1>
+    <p class="lede">One operations platform for two D2C beauty brands: marketplace orders, waybills, payouts, stock, profit, warehouse and HR — reconciled against the source platforms every day.</p>
+    <div class="meta"><span>PHP</span><span>CodeIgniter 3</span><span>MySQL</span><span>Shopee Open Platform</span><span>TikTok Shop API</span><span>Cron & webhooks</span><span>Ubuntu · Apache</span></div>
+    <div class="facts"><div class="fact"><b>Role</b>Full Stack Developer (built and maintain)</div><div class="fact"><b>Company</b>Montera Group (Skinlyfe & Prepare)</div><div class="fact"><b>Period</b>Jul 2026 – present</div><div class="fact"><b>Users</b>Operations, finance, warehouse, HR, owner</div></div>
+    <figure class="shot"><img src="assets/images/proj-erp.jpg" alt="ERP dashboard — order report and daily Shopee × Meta report (figures blurred)." loading="lazy"/></figure>
+    <figcaption class="cap">ERP dashboard — order report and daily Shopee × Meta report (figures blurred).</figcaption>
+  </div>
+
+  <section><h2><span class="n">01</span>Problem</h2><p>Orders came in from several Shopee and TikTok Shop stores while ads, stock, payouts and attendance lived in separate tools and spreadsheets. Numbers rarely matched: dashboards disagreed with Seller Center, waybills went missing, stock drifted, and profit could not be trusted because fees, payouts and COGS were never in one place.</p><p>The goal was a single system the whole team could rely on, where <strong>every figure can be traced back to the platform it came from.</strong></p></section>
+  <section><h2><span class="n">02</span>Architecture</h2><div class="flow"><div class="node"><b>Marketplace APIs</b><small>Shopee & TikTok Shop orders, waybills, finance/payouts</small></div><span class="arrow" aria-hidden="true">→</span><div class="node hl"><b>Sync layer</b><small>Webhooks + scheduled pulls, SKU & bundle mapping, retries</small></div><span class="arrow" aria-hidden="true">→</span><div class="node"><b>MySQL</b><small>Orders, items, stock moves, payouts, HPP, attendance</small></div><span class="arrow" aria-hidden="true">→</span><div class="node hl"><b>Validation jobs</b><small>Daily API vs ERP diff, auto re-pull on mismatch</small></div><span class="arrow" aria-hidden="true">→</span><div class="node"><b>ERP web app</b><small>Dashboards, reports, warehouse, HR, Excel export</small></div></div><p class="note">Simplified view. Each store and channel is pulled through the same sync layer so mapping, retries and logging behave identically.</p></section>
+  <section><h2><span class="n">03</span>My contribution</h2><ul class="list"><li>Designed and built the order, waybill and payout sync for Shopee and TikTok Shop, including listing/variant → SKU mapping and bundle splitting.</li><li>Built live sales dashboards and the "sales per day" table, aligned to Seller Center’s own definition of a sale.</li><li>Built net-profit reporting combining COGS, platform fees, payouts, ad spend and expenses, with clear warnings when data is missing.</li><li>Built a warehouse module: barcode scan stations, 100×150 shipping labels, waybill tracking and problem-parcel alerts.</li><li>Built HR features: face-verified clock-in with server-side matching, office Wi-Fi/GPS presence check and an attendance map.</li><li>Wrote daily validation jobs that compare ERP against the marketplace APIs and re-pull anything that differs.</li><li>Run the production server: Apache, UFW and fail2ban, patching, and encrypted daily off-site backups.</li></ul></section>
+  <section><h2><span class="n">04</span>Technical challenges</h2><div class="ch"><h3>Dashboard did not match Seller Center</h3><p>Totals drifted from Seller Center even though every order was present.</p><p class="fix">Found that Seller Center counts a sale by payment time, not creation time, and treats unpaid COD differently. Rewrote the aggregation to the same definition; real-time totals now match order for order.</p></div><div class="ch"><h3>Orders arriving without products</h3><p>Webhook orders from listings without variants had no product, stock or COGS attached.</p><p class="fix">Added fallback lookups (item ID, then listing SKU) in the Shopee webhook path, back-filled affected orders and added a check so it cannot silently recur.</p></div><div class="ch"><h3>Stock that could not be trusted</h3><p>Stock was deducted at different moments, bundles were stored as their own SKUs and cancellations did not return stock.</p><p class="fix">Unified to one rule (deduct on shipment), split bundles into unit SKUs, auto-return stock on cancel/return, and added a stock-opname flow to reset the baseline.</p></div><div class="ch"><h3>Slow face check on iPhone</h3><p>Camera opened slowly and detection lagged on iOS WebKit.</p><p class="fix">Lower-resolution preview stream, small detection frames, cached and pre-warmed models; capture only when the face is still and sharp.</p></div></section>
+  <section><h2><span class="n">05</span>Results</h2><ul class="list"><li>Daily automated reconciliation of orders and waybills against the marketplace APIs, with mismatches re-pulled automatically.</li><li>Real-time sales and daily sales tables match Seller Center to the order.</li><li>Single source of truth for orders, stock, payouts, profit, warehouse and attendance used by the whole team every day.</li><li>Business volume and revenue are intentionally not published.</li></ul></section>
+  <section><h2><span class="n">06</span>Evidence</h2><ul class="list"><li>Blurred screenshots of the dashboard and reports (above).</li><li>Architecture and validation flow described on this page.</li><li>Live walkthrough available on request.</li></ul>
+    <p class="note">Internal company system. Source code is private; screenshots are blurred to hide business figures and personal data. Happy to walk through the code and architecture in an interview.</p></section>
+
+  <div class="next"><a class="btn" href="index.html#projects">← Back to projects</a><a class="btn pri" href="case-ads.html">Next: Ads Reporting Automation →</a></div>
+</main>
+</body>
+</html>

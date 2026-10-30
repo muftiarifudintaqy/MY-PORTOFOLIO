@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Affiliate WhatsApp Inbox · Case Study · Mufti Arifudin Taqy</title>
+<meta name="description" content="A shared web inbox that brings six affiliate team WhatsApp numbers into one screen, so unanswered chats never slip through."/>
+<link rel="icon" type="image/png" href="assets/images/logo.png"/>
+<link rel="stylesheet" href="case.css"/>
+</head>
+<body>
+<header class="top"><div class="wrap"><a class="brand" href="index.html">Mufti<span>Portfolio</span></a><a class="back" href="index.html#projects">← All projects</a></div></header>
+<main class="wrap">
+  <div class="hero">
+    <div class="eyebrow">Case study · Internal system</div>
+    <h1>Affiliate WhatsApp Inbox</h1>
+    <p class="lede">A shared web inbox that brings six affiliate team WhatsApp numbers into one screen, so unanswered chats never slip through.</p>
+    <div class="meta"><span>Node.js</span><span>Baileys (WhatsApp multi-device)</span><span>MySQL</span><span>WebSocket</span><span>Ubuntu · Apache</span></div>
+    <div class="facts"><div class="fact"><b>Role</b>Full Stack Developer (built and maintain)</div><div class="fact"><b>Scope</b>6 team WhatsApp numbers</div><div class="fact"><b>Access</b>Owner only, behind login</div><div class="fact"><b>Users</b>Affiliate team lead</div></div>
+    <figure class="shot"><img src="assets/images/proj-affiliate.jpg" alt="Inbox — accounts sidebar, unanswered counters and chat list (names, numbers and messages blurred)." loading="lazy"/></figure>
+    <figcaption class="cap">Inbox — accounts sidebar, unanswered counters and chat list (names, numbers and messages blurred).</figcaption>
+  </div>
+
+  <section><h2><span class="n">01</span>Problem</h2><p>The affiliate team handled hundreds of conversations on six phones. Nobody could see which chats were still waiting, how long replies took, or what had been said on another number.</p><p>The goal: <strong>one screen for all six numbers</strong> while the team keeps using WhatsApp on their phones as usual.</p></section>
+  <section><h2><span class="n">02</span>Architecture</h2><div class="flow"><div class="node"><b>Team phones</b><small>WhatsApp stays on the phone</small></div><span class="arrow" aria-hidden="true">→</span><div class="node hl"><b>Linked device</b><small>Baileys session per number, full history sync</small></div><span class="arrow" aria-hidden="true">→</span><div class="node hl"><b>Node.js service</b><small>Message events, contact & name mapping, audit log</small></div><span class="arrow" aria-hidden="true">→</span><div class="node"><b>MySQL</b><small>Chats, messages, edits/deletes, contacts</small></div><span class="arrow" aria-hidden="true">→</span><div class="node"><b>Web inbox</b><small>Live updates over WebSocket</small></div></div><p class="note">Each number is linked like WhatsApp Web, so no phone or number has to be migrated to a business API.</p></section>
+  <section><h2><span class="n">03</span>My contribution</h2><ul class="list"><li>Built the multi-account service: one session per number, reconnect handling, and clear "disconnected / scan again" states.</li><li>Stores full chat history with edit and delete history, and an audit log of everything sent from the web.</li><li>Unanswered-chat counters per account, a "not replied" filter and reply-time per chat.</li><li>Resolves contact names and profile photos like WhatsApp does, with manually set labels for each team number.</li><li>Anti-ban safeguards: no broadcast, rate-limited sending, and no automatic read receipts.</li></ul></section>
+  <section><h2><span class="n">04</span>Technical challenges</h2><div class="ch"><h3>Contacts showing as long hidden IDs</h3><p>Many chats appeared as anonymous IDs instead of names or phone numbers.</p><p class="fix">Mapped hidden IDs to phone numbers from WhatsApp’s own sync data, then fell back to profile names; applied to all existing chats.</p></div><div class="ch"><h3>Labels flickering while typing</h3><p>The page auto-refreshes status every few seconds and kept resetting the label being edited.</p><p class="fix">Refresh skips fields that are focused, saves on Enter or blur with a debounce, and uses stable keys so cards do not re-mount.</p></div><div class="ch"><h3>Sessions logged out from the phone</h3><p>When a phone removed the linked device, the slot looked connected but was not.</p><p class="fix">Detect logout, show a disconnected state, keep history readable and offer a one-click re-scan.</p></div></section>
+  <section><h2><span class="n">05</span>Results</h2><ul class="list"><li>All six numbers in one inbox with live updates.</li><li>Unanswered chats visible per account and in total.</li><li>History, edits and deletions preserved for review.</li></ul></section>
+  <section><h2><span class="n">06</span>Evidence</h2><ul class="list"><li>Blurred inbox screenshot (above).</li><li>Architecture described on this page.</li><li>Demo with dummy contacts available on request.</li></ul>
+    <p class="note">Internal company system. Source code is private; screenshots are blurred to hide business figures and personal data. Happy to walk through the code and architecture in an interview.</p></section>
+
+  <div class="next"><a class="btn" href="index.html#projects">← Back to projects</a><a class="btn pri" href="case-erp.html">Next: Montera ERP →</a></div>
+</main>
+</body>
+</html>
