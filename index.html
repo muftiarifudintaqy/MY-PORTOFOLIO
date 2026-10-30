@@ -884,7 +884,7 @@ if(window.innerWidth>768){
   const C = 2 * Math.PI * 54;
   if (ring) { ring.style.strokeDasharray = C; ring.style.strokeDashoffset = C; }
   let seen = false; try { seen = sessionStorage.getItem('mt_seen') === '1'; sessionStorage.setItem('mt_seen','1'); } catch(_) {}
-  if (seen || matchMedia('(prefers-reduced-motion: reduce)').matches) { loader.remove(); document.body.classList.add('loaded'); return; }
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) { loader.remove(); document.body.classList.add('loaded'); return; }
   document.body.classList.add('loading');
   let shown = 0, target = 0, done = false, ready = false;
   const t0 = performance.now(), MIN = 1400;
