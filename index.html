@@ -887,7 +887,7 @@ if(window.innerWidth>768){
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) { loader.remove(); document.body.classList.add('loaded'); return; }
   document.body.classList.add('loading');
   let shown = 0, target = 0, done = false, ready = false;
-  const t0 = performance.now(), MIN = 1400;
+  const t0 = performance.now(), MIN = seen ? 350 : 1400;
   function paint(v){
     bar.style.width = v + '%';
     if (ring) ring.style.strokeDashoffset = C * (1 - v / 100);
