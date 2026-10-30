@@ -1297,3 +1297,6 @@ body.loaded > *:not(#siteLoader) { animation: pageIn 1.2s cubic-bezier(.2,.7,.2,
 
 .tl-list{margin:10px 0 0;padding-left:18px;display:grid;gap:6px}
 .tl-list li{line-height:1.55}
+
+/* jarak daftar sekolah ke tag */
+.tl-list{margin:14px 0 22px !important;gap:8px !important}
