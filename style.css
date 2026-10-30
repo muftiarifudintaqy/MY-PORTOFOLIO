@@ -1290,3 +1290,7 @@ body.loaded > *:not(#siteLoader) { animation: pageIn 1.2s cubic-bezier(.2,.7,.2,
 .lv-pro { background:rgba(110,108,240,.14); color:var(--ac); }
 .lv-work { background:rgba(110,108,240,.08); color:var(--text2); }
 .lv-fam { background:transparent; color:var(--text3); border:1px solid var(--border); }
+
+.hp-field{position:absolute!important;left:-9999px!important;width:1px;height:1px;opacity:0}
+.form-msg a{color:var(--ac);text-decoration:underline}
+:focus-visible{outline:2px solid var(--ac);outline-offset:3px}
